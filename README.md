@@ -28,7 +28,7 @@ interface RemoteAppSecondary {
 ## Setup
 
 ### Prerequisites
-- Node.js 18.20.5 (see `.nvmrc`)
+- Node.js 20.19.0 (see `.nvmrc`)
 - Access to GitHub Packages for `@amuaapps` scoped packages
 - `NPM_PACKAGE_TOKEN` environment variable set
 
@@ -39,7 +39,7 @@ interface RemoteAppSecondary {
 nvm use
 
 # Install dependencies
-npm ci
+npm install
 
 # Start dev server (runs on port 3001)
 npm run dev
