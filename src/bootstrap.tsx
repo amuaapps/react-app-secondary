@@ -45,7 +45,7 @@ const remoteApp: RemoteAppInstance = {
 
       // Import secondary theme (scoped to .theme-secondary)
       // The shell loads core theme globally, this overrides within our container
-      import('@amuaapps/ui-theme-secondary/styles.css');
+      import('@amuaapps/ui-theme-secondary');
 
       root = ReactDOM.createRoot(container);
       root.render(
