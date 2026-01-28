@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secondary App - Local Dev</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      // Use standalone.tsx which includes globals.css for local dev
+      // (shell provides these tokens when running as remote app)
+      import remoteApp from './src/standalone.tsx';
+      
+      // Mount the app for local development
+      const container = document.getElementById('root');
+      if (container) {
+        const result = remoteApp.mount(container, {
+          basePath: '/secondary',
+          initialPath: '/secondary',
+          onNavigate: (path) => {
+            console.log('Navigation requested:', path);
+          },
+          contractVersion: '1',
+        });
+        
+        if (!result.success) {
+          console.error('Failed to mount app:', result.error);
+        }
+      }
+    </script>
+  </body>
+</html>
