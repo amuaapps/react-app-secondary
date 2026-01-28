@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@amuaapps/ui-library": "1.1.0-next.49",
-    "@amuaapps/ui-theme-core": "0.1.2-pr.4",
+    "@amuaapps/ui-theme-secondary": "0.1.0-pr.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0"

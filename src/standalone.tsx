@@ -1,11 +1,13 @@
 /**
  * Standalone Entry Point
  *
- * This file is used ONLY for standalone SPA development (index.html).
- * It imports the global theme CSS which the shell would normally provide.
+ * This file is used ONLY for standalone local development (index.html).
+ * It imports globals.css to provide base theme tokens for local dev.
  *
- * The remote entry (bootstrap.tsx) does NOT import globals.css to avoid
- * duplicating theme tokens when mounted by the shell.
+ * When mounted by the shell:
+ * - Shell provides core theme globally
+ * - bootstrap.tsx adds .theme-secondary class and imports secondary theme
+ * - Secondary theme overrides are scoped to the mount container
  */
 
 import './styles/globals.css';

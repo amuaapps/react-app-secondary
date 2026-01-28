@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
-// NOTE: Do NOT import globals.css here - the shell already loads theme tokens globally
-// For standalone dev, globals.css is imported in index.html via main.tsx
+// NOTE: Do NOT import globals.css here
+// - Shell loads core theme globally for nav/footer/layout
+// - Secondary theme is imported dynamically in mount() and scoped to .theme-secondary
+// - For standalone dev, globals.css is imported in standalone.tsx
 import {
   REMOTE_APP_CONTRACT_VERSION,
   RemoteAppErrorType,
@@ -37,6 +39,13 @@ const remoteApp: RemoteAppInstance = {
           error: `${RemoteAppErrorType.INVALID_CONTRACT_VERSION}: Unsupported contract version: ${options.contractVersion}. Expected: ${REMOTE_APP_CONTRACT_VERSION}`,
         };
       }
+
+      // Apply secondary theme class to scope secondary theme styles to this container
+      container.classList.add('theme-secondary');
+
+      // Import secondary theme (scoped to .theme-secondary)
+      // The shell loads core theme globally, this overrides within our container
+      import('@amuaapps/ui-theme-secondary/styles.css');
 
       root = ReactDOM.createRoot(container);
       root.render(
