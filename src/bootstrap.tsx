@@ -45,6 +45,7 @@ const remoteApp: RemoteAppInstance = {
 
       // Import secondary theme (scoped to .theme-secondary)
       // The shell loads core theme globally, this overrides within our container
+      // @ts-expect-error - Package requires NPM_PACKAGE_TOKEN, available in CI/CD
       import('@amuaapps/ui-theme-secondary');
 
       root = ReactDOM.createRoot(container);
