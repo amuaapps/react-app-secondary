@@ -8,7 +8,11 @@ interface AppProps {
   onNavigate?: (path: string) => void;
 }
 
-export function App({ basePath = '/secondary', initialPath, onNavigate }: AppProps) {
+export function App({
+  basePath = '/secondary',
+  initialPath,
+  onNavigate,
+}: AppProps) {
   const onNavigateRef = useRef(onNavigate);
   const basePathRef = useRef(basePath);
 

@@ -45,7 +45,8 @@ describe.skip('Navigation Synchronization', () => {
       // Check that at least one call was made with a path starting with /secondary
       const calls = mockNavigate.mock.calls as Array<[string]>;
       const hasValidCall = calls.some(
-        (call) => typeof call[0] === 'string' && call[0].startsWith('/secondary')
+        (call) =>
+          typeof call[0] === 'string' && call[0].startsWith('/secondary')
       );
       expect(hasValidCall).toBe(true);
     }

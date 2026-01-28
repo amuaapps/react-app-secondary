@@ -18,7 +18,9 @@ describe('Remote Entry', () => {
   });
 
   it('window.remoteApp_secondary matches exported instance', () => {
-    const globalWindow = window as typeof window & { remoteApp_secondary?: unknown };
+    const globalWindow = window as typeof window & {
+      remoteApp_secondary?: unknown;
+    };
     expect(globalWindow.remoteApp_secondary).toBe(remoteApp);
   });
 });
