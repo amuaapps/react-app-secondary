@@ -8,7 +8,9 @@ COPY package*.json ./
 
 # Install dependencies (including devDependencies for build)
 ARG NPM_PACKAGE_TOKEN
-RUN echo "//npm.pkg.github.com/:_authToken=${NPM_PACKAGE_TOKEN}" > .npmrc && \
+RUN echo "@amuaapps:registry=https://npm.pkg.github.com" > .npmrc && \
+    echo "//npm.pkg.github.com/:_authToken=${NPM_PACKAGE_TOKEN}" >> .npmrc && \
+    echo "legacy-peer-deps=true" >> .npmrc && \
     npm install && \
     rm -f .npmrc
 
