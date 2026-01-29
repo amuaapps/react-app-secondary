@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { createSecondaryRouter } from '@/lib/router';
 
@@ -8,37 +8,8 @@ interface AppProps {
   onNavigate?: (path: string) => void;
 }
 
-export function App({
-  basePath = '/secondary',
-  initialPath,
-  onNavigate,
-}: AppProps) {
-  const onNavigateRef = useRef(onNavigate);
-  const basePathRef = useRef(basePath);
-
-  // Keep refs updated
-  useEffect(() => {
-    onNavigateRef.current = onNavigate;
-    basePathRef.current = basePath;
-  }, [onNavigate, basePath]);
-
-  // Wrap onNavigate to ensure absolute paths
-  const handleNavigate = useMemo(() => {
-    return (path: string) => {
-      if (onNavigateRef.current) {
-        // Ensure path is absolute with basePath
-        const absolutePath = path.startsWith(basePathRef.current)
-          ? path
-          : `${basePathRef.current}${path.startsWith('/') ? path : `/${path}`}`;
-        onNavigateRef.current(absolutePath);
-      }
-    };
-  }, []);
-
-  const router = useMemo(
-    () => createSecondaryRouter(basePath, handleNavigate),
-    [basePath, handleNavigate]
-  );
+export function App({ basePath = '/secondary', initialPath }: AppProps) {
+  const router = useMemo(() => createSecondaryRouter(basePath), [basePath]);
 
   // Handle initial path navigation
   useEffect(() => {

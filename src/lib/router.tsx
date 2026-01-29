@@ -6,20 +6,16 @@ import { RouteWrapper } from './RouteWrapper';
 /**
  * Create router for the secondary app
  * @param basePath - Base path for all routes (e.g., '/secondary')
- * @param onNavigate - Callback to notify shell of navigation
  */
-export function createSecondaryRouter(
-  basePath: string = '/secondary',
-  onNavigate?: (path: string) => void
-) {
+export function createSecondaryRouter(basePath: string = '/secondary') {
   const routes: RouteObject[] = [
     {
       path: '/',
-      element: <RouteWrapper basePath={basePath} onNavigate={onNavigate} />,
+      element: <RouteWrapper />,
     },
     {
       path: '*',
-      element: <RouteWrapper basePath={basePath} onNavigate={onNavigate} />,
+      element: <RouteWrapper />,
     },
   ];
 
